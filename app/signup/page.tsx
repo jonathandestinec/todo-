@@ -25,7 +25,8 @@ function page() {
         if (error) {
             alert(error.message)
         } else {
-            alert("Signed up. Check your email to verify your account")
+            alert("Signed up 🚀📝⛸️")
+            router.replace("/login")
         }
 
     }
