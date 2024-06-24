@@ -27,6 +27,7 @@ function page() {
         } else {
             alert("Signed up 🚀📝⛸️")
             router.replace("/login")
+            // 
         }
 
     }
