@@ -5,8 +5,10 @@ import { createClient } from '@/utils/supabase/client'
 import { useRouter } from 'next/navigation'
 
 function page() {
-    const supabase = createClient()
+
     const router = useRouter()
+
+    const supabase = createClient()
 
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
@@ -15,7 +17,7 @@ function page() {
 
         e.preventDefault()
 
-        let { data, error } = await supabase.auth.signInWithPassword({
+        let { data, error } = await supabase.auth.signUp({
             email: email,
             password: password
         })
@@ -23,10 +25,8 @@ function page() {
         if (error) {
             alert(error.message)
         } else {
-            router.replace("/")
-            alert("Logged in")
+            alert("Signed up. Check your email to verify your account")
         }
-
 
     }
 
@@ -35,7 +35,7 @@ function page() {
             <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
                 <div className="sm:mx-auto sm:w-full sm:max-w-sm">
                     <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
-                        Sign in to your account
+                        Create an account
                     </h2>
                 </div>
 
@@ -94,15 +94,15 @@ function page() {
                                 type="submit"
                                 className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                             >
-                                Sign in
+                                Sign up
                             </button>
                         </div>
                     </form>
 
                     <p className="mt-10 text-center text-sm text-gray-500">
-                        Not a member?{' '}
-                        <a href="/signup" className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">
-                            signup
+                        Already have an account?{' '}
+                        <a href="/login" className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">
+                            signin
                         </a>
                     </p>
                 </div>
